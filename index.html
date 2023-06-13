@@ -17,70 +17,89 @@
     />
   </head>
 
-  <body class="container" onload="slideLogoUp()">
-    <!--INTRODUCE HOW AND YOU DID THIS MUSIC!-->
-    <audio
-      id="myAudio"
-      src="./media/Pokemon RedBlue Opening Theme Music Remake.mp3"
-      controls
-    ></audio>
-    <audio
-      id="selectSound"
-      src="./media/Pokemon (A Button) - Sound Effect (HD).mp3"
-      controls
-    ></audio>
-    <audio
-      id="startGameAudio"
-      src="./media/Pokemon GoldSilverCrystal  Red Battle Theme Remix.mp3"
-      controls
-    ></audio>
+  <body onload="slideLogoUp()">
+    <div class="container">
+      <!--INTRODUCE HOW AND YOU DID THIS MUSIC!-->
+      <audio
+        id="myAudio"
+        src="./media/Pokemon RedBlue Opening Theme Music Remake.mp3"
+        controls
+      ></audio>
+      <audio
+        id="selectSound"
+        src="./media/Pokemon (A Button) - Sound Effect (HD).mp3"
+        controls
+      ></audio>
+      <audio
+        id="startGameAudio"
+        src="./media/Pokemon GoldSilverCrystal  Red Battle Theme Remix.mp3"
+        controls
+      ></audio>
 
-    <!--Section 1 STARTS HERE-->
-    <section id="sec1">
-      <div id="logo-container">
-        <img id="logo" src="./images/pokemon-logo.png" />
-        <div id="game-title">
-          <h1>TOMAKAIROS</h1>
-          <h2>VERSION</h2>
+      <!--Section 1 STARTS HERE-->
+      <section id="sec1">
+        <div id="logo-container">
+          <img id="logo" src="./images/pokemon-logo.png" />
+          <div id="game-title">
+            <h1>TOMAKAIROS</h1>
+            <h2>VERSION</h2>
+          </div>
         </div>
-      </div>
-      <div id="startButton" onload="startBtnFlicker()">
-        <button id="pressStart" class="flicker">PRESS START</button>
-      </div>
-    </section>
+        <div id="startButton" onload="startBtnFlicker()">
+          <button id="pressStart" class="flicker">PRESS START</button>
+        </div>
+      </section>
 
-    <!--SECTION 2 STARTS HERE-->
-    <section id="sec2">
-      <div id="monsterName"></div>
-      <div class="monsterSelected">
-        <img class="Pikachu" src="./images/Pikachu.gif" alt="" />
-        <img class="Charmander" src="./images/Charmander.gif" alt="" />
-        <img class="Squirtle" src="./images/Squirtle.gif" alt="" />
-        <img class="Bulbasaur" src="./images/Bulbasaur.gif" alt="" />
-      </div>
-      <div class="choose-container">
-        <div class="chooseMonster">
-          <img id="Pikachu" class="pokeball" src="./images/pokeball.png" />
-          <img id="Charmander" class="pokeball" src="./images/pokeball.png" />
-          <img id="Squirtle" class="pokeball" src="./images/pokeball.png" />
-          <img id="Bulbasaur" class="pokeball" src="./images/pokeball.png" />
+      <!--SECTION 2 STARTS HERE-->
+      <section id="sec2">
+        <div id="monsterName"></div>
+        <div class="monsterSelected">
+          <img class="Pikachu" src="./images/Pikachu.gif" alt="" />
+          <img class="Charmander" src="./images/Charmander.gif" alt="" />
+          <img class="Squirtle" src="./images/Squirtle.gif" alt="" />
+          <img class="Bulbasaur" src="./images/Bulbasaur.gif" alt="" />
         </div>
-        <h1>Choose Your Pokemon!</h1>
-        <div class="startGame-Container">
-          <button id="startGame">BATTLE!</button>
+        <div class="choose-container">
+          <div class="chooseMonster">
+            <img id="Pikachu" class="pokeball" src="./images/pokeball.png" />
+            <img id="Charmander" class="pokeball" src="./images/pokeball.png" />
+            <img id="Squirtle" class="pokeball" src="./images/pokeball.png" />
+            <img id="Bulbasaur" class="pokeball" src="./images/pokeball.png" />
+          </div>
+          <h1>Choose Your Pokemon!</h1>
+          <div class="startGame-Container">
+            <button id="startGame">BATTLE!</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="sec3">
-      <div class="battle-container1">
-        <div id="chosenMonster"></div>
-        <div id="enemyMonster"></div>
-      </div>
-      <div class="attackBtn-Container">
-        <button id="attackBtn">ATTACK!</button>
-      </div>
-    </section>
+      <section id="sec3">
+        <div class="battle-container1">
+          <div id="chosenMonster"></div>
+          <div id="enemyMonster"></div>
+        </div>
+        <div class="health-text">
+          <h1 id="chosenMonsterName"></h1>
+          <p id="levelText" data-value="5">lvl:</p>
+        </div>
+        <div class="healthBar-Container">
+          <progress id="healthBar" value="100" max="100"></progress>
+        </div>
+        <div class="expBar-Container">
+          <progress id="expBar" value="0" max="100"></progress>
+        </div>
+        <div class="attackBtn-Container">
+          <div>
+            <button id="attackBtn1"></button>
+            <button id="attackBtn2"></button>
+          </div>
+          <div>
+            <button id="attackBtn3"></button>
+            <button id="attackBtn4"></button>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <script src="script.js"></script>
   </body>

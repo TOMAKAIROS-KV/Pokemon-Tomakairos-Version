@@ -10,6 +10,9 @@ h2 {
   font-size: 1.65rem;
 }
 
+body {
+  background: linear-gradient(to bottom, #33ff88, #0059ff);
+}
 .container {
   width: 100%;
   height: 100vh;
@@ -17,11 +20,11 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #33ff88, #0059ff);
   font-family: "Share Tech", sans-serif;
 }
 
 #sec1 {
+  /* display: none; enable this in order to edit section 2 */
 }
 
 #logo-container {
@@ -130,7 +133,7 @@ h2 {
 }
 
 .choose-container {
-  position: fixed;
+  position: relative;
   margin: 0 auto;
   left: 0;
   right: 0;
@@ -152,9 +155,11 @@ h2 {
 }
 
 #sec2 {
+  top: 25%;
+  display: none; /* remove these 2 in order to edit section 2 */
+  opacity: 0; /* remove these 2 in order to edit section 2 */
   position: fixed;
-  display: none;
-  opacity: 0;
+
   color: white;
 }
 
@@ -167,26 +172,25 @@ h2 {
 }
 .Pikachu {
   width: auto;
-  height: 300px;
+  height: 25vh;
   display: none;
   opacity: 0;
-  margin-left: 75px;
 }
 .Charmander {
   width: auto;
-  height: 300px;
+  height: 25vh;
   display: none;
   opacity: 0;
 }
 .Squirtle {
   width: auto;
-  height: 300px;
+  height: 25vh;
   display: none;
   opacity: 0;
 }
 .Bulbasaur {
   width: auto;
-  height: 300px;
+  height: 25vh;
   display: none;
   opacity: 0;
 }
@@ -235,8 +239,7 @@ h2 {
 #monsterName {
   left: 0;
   right: 0;
-  bottom: 75%;
-  position: fixed;
+  position: relative;
   text-align: center;
   font-size: 2rem;
   color: white;
@@ -311,19 +314,58 @@ h2 {
   height: auto;
 }
 
-#attackBtn {
-  width: auto;
+#attackBtn1 {
+  width: 150px;
   background-color: rgba(0, 0, 0, 0.25);
   border: 3px solid white;
-  border-radius: 30px;
-  margin-top: 25px;
-  padding: 20px 40px 20px 40px;
-  font-size: 3rem;
-  font-weight: bold;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 1rem;
   color: white;
 }
 
-#attackBtn:hover {
+#attackBtn1:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#attackBtn2 {
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 1rem;
+  color: white;
+}
+
+#attackBtn2:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#attackBtn3 {
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 1rem;
+  color: white;
+}
+
+#attackBtn3:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#attackBtn4 {
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 1rem;
+  color: white;
+}
+
+#attackBtn4:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -332,4 +374,88 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
+  gap: 10px;
+}
+
+.healthBar-Container {
+  width: 50%;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px auto;
+}
+
+#healthBar::before {
+  position: absolute;
+  content: "Health";
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+#healthBar {
+  color: black;
+  width: 100%;
+  height: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+#healthBar::-webkit-progress-bar {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+#healthBar::-webkit-progress-value {
+  background-color: rgb(0, 161, 40);
+}
+
+.health-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#chosenMonsterName {
+}
+
+#chosenMonsterName::before {
+  content: var(--before-content);
+}
+
+.expBar-Container {
+  width: 50%;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#expBar::before {
+  color: black;
+  position: absolute;
+  content: "exp";
+  width: 100%;
+  height: auto;
+  text-align: center;
+  top: -5px;
+}
+#expBar {
+  width: 100%;
+  height: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+#expBar::-webkit-progress-bar {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+#expBar::-webkit-progress-value {
+  background-color: rgb(0, 255, 179);
+}
+
+#levelText::after {
+  content: attr(data-value);
 }
