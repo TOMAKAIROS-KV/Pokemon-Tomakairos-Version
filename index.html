@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TK-POKEMON</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&family=Secular+One&family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="container" onload="slideLogoUp()">
+    <!--INTRODUCE HOW AND YOU DID THIS MUSIC!-->
+    <audio
+      id="myAudio"
+      src="./media/Pokemon RedBlue Opening Theme Music Remake.mp3"
+      controls
+    ></audio>
+    <audio
+      id="selectSound"
+      src="./media/Pokemon (A Button) - Sound Effect (HD).mp3"
+      controls
+    ></audio>
+    <audio
+      id="startGameAudio"
+      src="./media/Pokemon GoldSilverCrystal  Red Battle Theme Remix.mp3"
+      controls
+    ></audio>
+
+    <!--Section 1 STARTS HERE-->
+    <section id="sec1">
+      <div id="logo-container">
+        <img id="logo" src="./images/pokemon-logo.png" />
+        <div id="game-title">
+          <h1>TOMAKAIROS</h1>
+          <h2>VERSION</h2>
+        </div>
+      </div>
+      <div id="startButton" onload="startBtnFlicker()">
+        <button id="pressStart" class="flicker">PRESS START</button>
+      </div>
+    </section>
+
+    <!--SECTION 2 STARTS HERE-->
+    <section id="sec2">
+      <div id="monsterName"></div>
+      <div class="monsterSelected">
+        <img class="Pikachu" src="./images/Pikachu.gif" alt="" />
+        <img class="Charmander" src="./images/Charmander.gif" alt="" />
+        <img class="Squirtle" src="./images/Squirtle.gif" alt="" />
+        <img class="Bulbasaur" src="./images/Bulbasaur.gif" alt="" />
+      </div>
+      <div class="choose-container">
+        <div class="chooseMonster">
+          <img id="Pikachu" class="pokeball" src="./images/pokeball.png" />
+          <img id="Charmander" class="pokeball" src="./images/pokeball.png" />
+          <img id="Squirtle" class="pokeball" src="./images/pokeball.png" />
+          <img id="Bulbasaur" class="pokeball" src="./images/pokeball.png" />
+        </div>
+        <h1>Choose Your Pokemon!</h1>
+        <div class="startGame-Container">
+          <button id="startGame">BATTLE!</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec3">
+      <div class="battle-container1">
+        <div id="chosenMonster"></div>
+        <div id="enemyMonster"></div>
+      </div>
+      <div class="attackBtn-Container">
+        <button id="attackBtn">ATTACK!</button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
