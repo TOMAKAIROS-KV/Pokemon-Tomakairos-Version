@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
     <title>TK-POKEMON</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -75,27 +79,38 @@
 
       <section id="sec3">
         <div class="battle-container1">
-          <div id="chosenMonster"></div>
-          <div id="enemyMonster"></div>
-        </div>
-        <div class="health-text">
-          <h1 id="chosenMonsterName"></h1>
-          <p id="levelText" data-value="5">lvl:</p>
-        </div>
-        <div class="healthBar-Container">
-          <progress id="healthBar" value="100" max="100"></progress>
-        </div>
-        <div class="expBar-Container">
-          <progress id="expBar" value="0" max="100"></progress>
-        </div>
-        <div class="attackBtn-Container">
-          <div>
-            <button id="attackBtn1"></button>
-            <button id="attackBtn2"></button>
+          <div class="enemyContainer">
+            <div class="enemyMonster-text">
+              <h1 id="enemyMonsterName"></h1>
+              <p id="elevelText" data-value="">lvl:</p>
+            </div>
+            <div class="ehealthBar-Container">
+              <progress id="ehealthBar" value="100" max="100"></progress>
+            </div>
+            <div id="enemyMonster"></div>
           </div>
-          <div>
-            <button id="attackBtn3"></button>
-            <button id="attackBtn4"></button>
+          <div class="chosenMonsterContainer">
+            <div id="chosenMonster"></div>
+            <div class="chosenMonster-text">
+              <h1 id="chosenMonsterName"></h1>
+              <p id="levelText" data-value="15">lvl:</p>
+            </div>
+            <div class="healthBar-Container">
+              <progress id="healthBar" value="100" max="100"></progress>
+            </div>
+            <div class="expBar-Container">
+              <progress id="expBar" value="0" max="100"></progress>
+            </div>
+          </div>
+          <div class="attackBtn-Container">
+            <div>
+              <button id="attackBtn1"></button>
+              <button id="attackBtn2"></button>
+            </div>
+            <div>
+              <button id="attackBtn3"></button>
+              <button id="attackBtn4"></button>
+            </div>
           </div>
         </div>
       </section>

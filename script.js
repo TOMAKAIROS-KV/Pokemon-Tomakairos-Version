@@ -60,87 +60,19 @@ let selectSound = document.getElementById("selectSound");
 selectSound.volume = 0.5;
 
 function showMonster1() {
-  pikachu.style.display = "block";
-  pikachu.classList.add("showMonster");
-  monsterName.innerText = "Pikachu";
-  selectSound.currentTime = 0; // Reset the sound to the beginning
-  selectSound.play();
-  isMonster1Shown = true;
-
-  if (isMonster1Shown) {
-    charmander.style.display = "none";
-    charmander.classList.remove("showMonster");
-    isMonster2Shown = false;
-    squirtle.style.display = "none";
-    squirtle.classList.remove("showMonster");
-    isMonster3Shown = false;
-    bulbasaur.style.display = "none";
-    bulbasaur.classList.remove("showMonster");
-    isMonster4Shown = false;
-  }
+  chosenPikachu.applyToOperator();
 }
 
 function showMonster2() {
-  charmander.style.display = "block";
-  charmander.classList.add("showMonster");
-  monsterName.innerText = "Charmander";
-  selectSound.currentTime = 0; // Reset the sound to the beginning
-  selectSound.play();
-  isMonster2Shown = true;
-
-  if (isMonster2Shown) {
-    pikachu.style.display = "none";
-    pikachu.classList.remove("showMonster");
-    isMonster1Shown = false;
-    squirtle.style.display = "none";
-    squirtle.classList.remove("showMonster");
-    isMonster3Shown = false;
-    bulbasaur.style.display = "none";
-    bulbasaur.classList.remove("showMonster");
-    isMonster4Shown = false;
-  }
+  chosenCharmander.applyToOperator();
 }
 
 function showMonster3() {
-  squirtle.style.display = "block";
-  squirtle.classList.add("showMonster");
-  monsterName.innerText = "Squirtle";
-  selectSound.currentTime = 0; // Reset the sound to the beginning
-  selectSound.play();
-  isMonster3Shown = true;
-
-  if (isMonster3Shown) {
-    pikachu.style.display = "none";
-    pikachu.classList.remove("showMonster");
-    isMonster1Shown = false;
-    charmander.style.display = "none";
-    charmander.classList.remove("showMonster");
-    isMonster2Shown = false;
-    bulbasaur.style.display = "none";
-    bulbasaur.classList.remove("showMonster");
-    isMonster4Shown = false;
-  }
+  chosenSquirtle.applyToOperator();
 }
 
 function showMonster4() {
-  bulbasaur.style.display = "block";
-  bulbasaur.classList.add("showMonster");
-  monsterName.innerText = "Bulbasaur";
-  selectSound.currentTime = 0; // Reset the sound to the beginning
-  selectSound.play();
-  isMonster4Shown = true;
-
-  if (isMonster4Shown) {
-    pikachu.style.display = "none";
-    pikachu.classList.remove("showMonster");
-    isMonster1Shown = false;
-    charmander.style.display = "none";
-    charmander.classList.remove("showMonster");
-    isMonster2Shown = false;
-    squirtle.style.display = "none";
-    squirtle.classList.remove("showMonster");
-    isMonster3Shown = false;
-  }
+  chosenBulbasaur.applyToOperator();
 }
 
 let startGame = document.getElementById("startGame");
@@ -171,7 +103,7 @@ function startGameAction() {
     !isMonster3Shown &&
     !isMonster4Shown
   ) {
-    console.log("BATTLE START! MISSINGO!");
+    secretEncounter();
   } else if (
     isMonster1Shown &&
     (!isMonster2Shown || !isMonster3Shown || !isMonster4Shown)
@@ -227,63 +159,338 @@ function startGameAction() {
   }
 }
 
+let primalKyogre = {
+  name: "Primal Kyogre",
+  img: "./images/PrimalKyogre.gif",
+  get lvl() {
+    return levelResult + 10;
+  },
+  applyToOperator: function () {
+    imgElementEnemy.src = this.img;
+    enemyMonster.appendChild(imgElementEnemy);
+    enemyMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    enemyMonster.style.marginRight = "115px";
+
+    let levelResult = primalKyogre.lvl; // Define levelResult here
+
+    function elevelAction() {
+      let elevelText = document.querySelector("#elevelText");
+      elevelText.setAttribute("data-value", levelResult);
+      console.log("Your level is " + levelResult);
+    }
+
+    elevelAction();
+  },
+};
+
+let chosenPikachu = {
+  name: "Pikachu",
+  img: "./images/PikachuBack.gif",
+  lvl: 15,
+  applyToOperator: function () {
+    imgElementChosen.src = this.img;
+    chosenMonster.appendChild(imgElementChosen);
+    chosenMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    console.log("Oh, it's so cute, it's the best of all!...Oh, hi Pikachu.");
+
+    pikachu.style.display = "block";
+    pikachu.classList.add("showMonster");
+    monsterName.innerText = "Pikachu";
+    selectSound.currentTime = 0; // Reset the sound to the beginning
+    selectSound.play();
+    isMonster1Shown = true;
+
+    if (isMonster1Shown) {
+      charmander.style.display = "none";
+      charmander.classList.remove("showMonster");
+      isMonster2Shown = false;
+      squirtle.style.display = "none";
+      squirtle.classList.remove("showMonster");
+      isMonster3Shown = false;
+      bulbasaur.style.display = "none";
+      bulbasaur.classList.remove("showMonster");
+      isMonster4Shown = false;
+    }
+  },
+};
+
 function monsterBattle1() {
   section3.style.display = "block";
   section3.classList.add("visible");
-  imgElementChosen.src = "./images/PikachuBack.gif";
-  chosenMonster.appendChild(imgElementChosen);
-  imgElementEnemy.src = "./images/PrimalKyogre.gif";
-  enemyMonster.appendChild(imgElementEnemy);
-  enemyMonster.style.marginRight = "200px";
-  chosenMonsterName.style.setProperty("--before-content", "'Pikachu'");
-  console.log("BATTLE START! Pikachu!");
+  primalKyogre.applyToOperator();
 }
+
+let celebi = {
+  name: "Celebi",
+  img: "./images/Celebi.gif",
+  get lvl() {
+    return levelResult + 10;
+  },
+  applyToOperator: function () {
+    imgElementEnemy.src = this.img;
+    enemyMonster.appendChild(imgElementEnemy);
+    enemyMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    enemyMonster.style.marginRight = "";
+
+    let levelResult = celebi.lvl; // Define levelResult here
+
+    function elevelAction() {
+      let elevelText = document.querySelector("#elevelText");
+      elevelText.setAttribute("data-value", levelResult);
+      console.log("Your level is " + levelResult);
+    }
+
+    elevelAction();
+  },
+};
+
+let chosenCharmander = {
+  name: "Charmander",
+  img: "./images/CharmanderBack.gif",
+  lvl: 15,
+  applyToOperator: function () {
+    imgElementChosen.src = this.img;
+    chosenMonster.appendChild(imgElementChosen);
+    chosenMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    console.log(
+      "Ohh, well that's no problem, because my Pokémon will be... Charmander."
+    );
+
+    charmander.style.display = "block";
+    charmander.classList.add("showMonster");
+    monsterName.innerText = "Charmander";
+    selectSound.currentTime = 0; // Reset the sound to the beginning
+    selectSound.play();
+    isMonster2Shown = true;
+
+    if (isMonster2Shown) {
+      pikachu.style.display = "none";
+      pikachu.classList.remove("showMonster");
+      isMonster1Shown = false;
+      squirtle.style.display = "none";
+      squirtle.classList.remove("showMonster");
+      isMonster3Shown = false;
+      bulbasaur.style.display = "none";
+      bulbasaur.classList.remove("showMonster");
+      isMonster4Shown = false;
+    }
+  },
+};
 
 function monsterBattle2() {
   section3.style.display = "block";
   section3.classList.add("visible");
-  imgElementChosen.src = "./images/CharmanderBack.gif";
-  chosenMonster.appendChild(imgElementChosen);
-  imgElementEnemy.src = "./images/Celebi.gif";
-  enemyMonster.appendChild(imgElementEnemy);
-  enemyMonster.style.marginRight = "";
-  chosenMonsterName.style.setProperty("--before-content", "'Charmander'");
-  console.log("BATTLE START! Charmander!");
+  celebi.applyToOperator();
 }
+
+let moltres = {
+  name: "Moltres",
+  img: "./images/Moltres.gif",
+  get lvl() {
+    return levelResult + 10;
+  },
+  applyToOperator: function () {
+    imgElementEnemy.src = this.img;
+    enemyMonster.appendChild(imgElementEnemy);
+    enemyMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    enemyMonster.style.marginRight = "100px";
+    enemyMonster.style.marginBottom = "100px";
+
+    let levelResult = moltres.lvl; // Define levelResult here
+
+    function elevelAction() {
+      let elevelText = document.querySelector("#elevelText");
+      elevelText.setAttribute("data-value", levelResult);
+      console.log("Your level is " + levelResult);
+    }
+
+    elevelAction();
+  },
+};
+
+let chosenSquirtle = {
+  name: "Squirtle",
+  img: "./images/SquirtleBack.gif",
+  lvl: 15,
+  applyToOperator: function () {
+    imgElementChosen.src = this.img;
+    chosenMonster.appendChild(imgElementChosen);
+    chosenMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    console.log(
+      " I thought about it a lot, and it took me along time, but I finally decided to choose... Squirtle! Ohhh!"
+    );
+
+    squirtle.style.display = "block";
+    squirtle.classList.add("showMonster");
+    monsterName.innerText = "Squirtle";
+    selectSound.currentTime = 0; // Reset the sound to the beginning
+    selectSound.play();
+    isMonster3Shown = true;
+
+    if (isMonster3Shown) {
+      pikachu.style.display = "none";
+      pikachu.classList.remove("showMonster");
+      isMonster1Shown = false;
+      charmander.style.display = "none";
+      charmander.classList.remove("showMonster");
+      isMonster2Shown = false;
+      bulbasaur.style.display = "none";
+      bulbasaur.classList.remove("showMonster");
+      isMonster4Shown = false;
+    }
+  },
+};
 
 function monsterBattle3() {
   section3.style.display = "block";
   section3.classList.add("visible");
-  imgElementChosen.src = "./images/SquirtleBack.gif";
-  chosenMonster.appendChild(imgElementChosen);
-  imgElementEnemy.src = "./images/Moltres.gif";
-  enemyMonster.appendChild(imgElementEnemy);
-  enemyMonster.style.marginRight = "200px";
-  chosenMonsterName.style.setProperty("--before-content", "'Squirtle'");
-  console.log("BATTLE START! Squirtle!");
+  moltres.applyToOperator();
 }
+
+let suicune = {
+  name: "Suicune",
+  img: "./images/Suicune.gif",
+  get lvl() {
+    return levelResult + 10;
+  },
+  applyToOperator: function () {
+    imgElementEnemy.src = this.img;
+    enemyMonster.appendChild(imgElementEnemy);
+    enemyMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    enemyMonster.style.marginRight = "10px";
+
+    let levelResult = suicune.lvl; // Define levelResult here
+
+    function elevelAction() {
+      let elevelText = document.querySelector("#elevelText");
+      elevelText.setAttribute("data-value", levelResult);
+      console.log("Your level is " + levelResult);
+    }
+
+    elevelAction();
+  },
+};
+
+let chosenBulbasaur = {
+  name: "Bulbasaur",
+  img: "./images/BulbasaurBack.gif",
+  lvl: 15,
+  applyToOperator: function () {
+    imgElementChosen.src = this.img;
+    chosenMonster.appendChild(imgElementChosen);
+    chosenMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    console.log(
+      "Oh, I wish I hadn't overslept. But now I would choose as my Pokémon... Bulbasaur!"
+    );
+
+    bulbasaur.style.display = "block";
+    bulbasaur.classList.add("showMonster");
+    monsterName.innerText = "Bulbasaur";
+    selectSound.currentTime = 0; // Reset the sound to the beginning
+    selectSound.play();
+    isMonster4Shown = true;
+
+    if (isMonster4Shown) {
+      pikachu.style.display = "none";
+      pikachu.classList.remove("showMonster");
+      isMonster1Shown = false;
+      charmander.style.display = "none";
+      charmander.classList.remove("showMonster");
+      isMonster2Shown = false;
+      squirtle.style.display = "none";
+      squirtle.classList.remove("showMonster");
+      isMonster3Shown = false;
+    }
+  },
+};
 
 function monsterBattle4() {
   section3.style.display = "block";
   section3.classList.add("visible");
-  imgElementChosen.src = "./images/BulbasaurBack.gif";
-  chosenMonster.appendChild(imgElementChosen);
-  imgElementEnemy.src = "./images/Suicune.gif";
-  enemyMonster.appendChild(imgElementEnemy);
-  enemyMonster.style.marginRight = "100px";
-  chosenMonsterName.style.setProperty("--before-content", "'Bulbasaur'");
-  console.log("BATTLE START! Bulbasaur!");
+  suicune.applyToOperator();
+}
+
+let trainer = {
+  name: "Red",
+  img: "./images/trainerRed-throw.png",
+  applyToOperator: function () {
+    imgElementChosen.src = this.img;
+    chosenMonster.appendChild(imgElementChosen);
+    chosenMonsterName.style.setProperty("--before-content", "'Red'");
+  },
+};
+
+let missingNo = {
+  name: "MissingNo",
+  img: "./images/MissingNo.gif",
+  get lvl() {
+    return levelResult + 85; // due to the getter function we are able to grab variables from outside of this missingNo variable and use the levelResult variable's value. By doing so we can now add any number to it and recall/create levelResult below and it will show the latest result.
+  },
+  applyToOperator: function () {
+    imgElementEnemy.src = this.img;
+    enemyMonster.appendChild(imgElementEnemy);
+    enemyMonster.style.scale = ".4";
+    enemyMonster.style.marginTop = "25px";
+    enemyMonster.style.marginBottom = "50px";
+    enemyMonster.style.marginRight = "50px";
+    enemyMonsterName.style.setProperty(
+      "--before-content",
+      "'" + this.name + "'"
+    );
+    console.log("BATTLE START! MissingNo!");
+    let levelResult = missingNo.lvl; // Define levelResult here
+
+    function elevelAction() {
+      let elevelText = document.querySelector("#elevelText");
+      elevelText.setAttribute("data-value", levelResult);
+      console.log("Your level is " + levelResult);
+    }
+
+    elevelAction();
+  },
+};
+
+function secretEncounter() {
+  section3.style.display = "block";
+  section3.classList.add("visible");
+  missingNo.applyToOperator();
+  trainer.applyToOperator();
 }
 
 startGame.addEventListener("click", startGameAction);
 
 let chosenMonsterName = document.getElementById("chosenMonsterName");
+let enemyMonsterName = document.getElementById("enemyMonsterName");
 let attackBtn = document.getElementById("attackBtn");
 let healthBar = document.getElementById("healthBar");
 let expBar = document.getElementById("expBar");
 let levelText = document.getElementById("levelText");
 
-let levelResult = 5; // declare variable outside of function in order to continuously update it.
+let levelResult = 15; // this levelResult is separate from the ones in the operators. this one defines the chosen monsters current level. everyone starts out at the same level.
 let healthDepletionMultiplier = 6.5;
 let expMultiplier = 7.5;
 
@@ -298,7 +505,7 @@ function attackAction1() {
   console.log(resultHealth);
   if (healthBar.value <= 0) {
     console.log("you lost!");
-    attackBtn.style.pointerEvents = "none";
+    attackBtn1.style.pointerEvents = "none";
     attackBtn2.style.pointerEvents = "none";
     attackBtn3.style.pointerEvents = "none";
     attackBtn4.style.pointerEvents = "none";
@@ -340,7 +547,7 @@ function combineActions() {
 attackBtn1.addEventListener("click", combineActions);
 
 //THINGS TO DO!
-// SET UP HEALTH-BAR FOR ENEMY MONSTER!
+// SET UP NAME, HEALTH-BAR, and LEVEL FOR ENEMY MONSTER! --- DONE! monster levels will be 10 higher than chosen Monsters.
 // SET ATTACK ANIMATION FOR CHOSEN MONSTER PER ATTACK BUTTON PER MONSTER.
 // SET UP SO THAT ATTACK BUTTONS DAMAGE ENEMY, NOT YOURSELF!
 // SET A DELAY AFTER YOUR ATTACK FOR ENEMY ATTACK TO START AND ANIMATE.

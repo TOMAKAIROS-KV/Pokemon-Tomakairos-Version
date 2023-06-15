@@ -24,7 +24,7 @@ body {
 }
 
 #sec1 {
-  /* display: none; enable this in order to edit section 2 */
+  /* enable this in order to edit section 2 */
 }
 
 #logo-container {
@@ -251,14 +251,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #startGame {
   width: auto;
   background-color: rgba(0, 0, 0, 0.25);
   border: 3px solid white;
-  border-radius: 30px;
+  border-radius: 10px;
   margin-top: 25px;
-  padding: 20px 40px 20px 40px;
-  font-size: 3rem;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: white;
 }
@@ -280,11 +281,12 @@ body {
   opacity: 0;
   color: white;
 }
+
 .battle-container1 {
   width: 100vw;
-  height: 500px;
-  padding: 20px;
+  height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -292,8 +294,8 @@ body {
   width: 50px;
   height: 50px;
   margin-left: auto;
-  margin-right: 50px;
-  margin-bottom: 200px;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 #chosenMonster {
@@ -301,7 +303,8 @@ body {
   height: auto;
   margin-right: auto;
   margin-left: 50px;
-  margin-top: 200px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 #chosenMonster img {
@@ -378,11 +381,17 @@ body {
   gap: 10px;
 }
 
+.chosenMonsterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+}
 .healthBar-Container {
   width: 50%;
   height: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
   margin: 5px auto;
 }
 
@@ -403,12 +412,46 @@ body {
 
 #healthBar::-webkit-progress-bar {
   background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+  border-radius: 5px;
 }
 #healthBar::-webkit-progress-value {
   background-color: rgb(0, 161, 40);
+  border-radius: 5px;
 }
 
-.health-text {
+.ehealthBar-Container {
+  width: 100%;
+  height: 20px;
+  margin: 5px auto;
+}
+
+#ehealthBar::before {
+  position: absolute;
+  content: "Health";
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+#ehealthBar {
+  color: black;
+  width: 100%;
+  height: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+#ehealthBar::-webkit-progress-bar {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+  border-radius: 5px;
+}
+#ehealthBar::-webkit-progress-value {
+  background-color: rgb(0, 161, 40);
+  border-radius: 5px;
+}
+
+.chosenMonster-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -425,7 +468,7 @@ body {
 }
 
 .expBar-Container {
-  width: 50%;
+  width: 49.5%;
   height: 10px;
   border: 1px solid black;
   border-radius: 5px;
@@ -457,5 +500,33 @@ body {
 }
 
 #levelText::after {
+  content: attr(data-value);
+}
+
+.enemyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  width: 50%;
+  margin: 0 auto;
+}
+.enemyMonster-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#enemyMonsterName {
+}
+
+#enemyMonsterName::before {
+  content: var(--before-content);
+}
+
+#elevelText::after {
   content: attr(data-value);
 }
