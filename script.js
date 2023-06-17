@@ -172,8 +172,6 @@ let primalKyogre = {
       "--before-content",
       "'" + this.name + "'"
     );
-    enemyMonster.style.marginRight = "115px";
-
     let levelResult = primalKyogre.lvl; // Define levelResult here
 
     function elevelAction() {
@@ -217,6 +215,12 @@ let chosenPikachu = {
       bulbasaur.classList.remove("showMonster");
       isMonster4Shown = false;
     }
+
+    attackBtn1.addEventListener("click", function () {
+      combineActions();
+      hideMonsterTimer();
+      voltTackleMove();
+    });
   },
 };
 
@@ -308,9 +312,6 @@ let moltres = {
       "--before-content",
       "'" + this.name + "'"
     );
-    enemyMonster.style.marginRight = "100px";
-    enemyMonster.style.marginBottom = "100px";
-
     let levelResult = moltres.lvl; // Define levelResult here
 
     function elevelAction() {
@@ -378,7 +379,6 @@ let suicune = {
       "--before-content",
       "'" + this.name + "'"
     );
-    enemyMonster.style.marginRight = "10px";
 
     let levelResult = suicune.lvl; // Define levelResult here
 
@@ -441,6 +441,7 @@ let trainer = {
     imgElementChosen.src = this.img;
     chosenMonster.appendChild(imgElementChosen);
     chosenMonsterName.style.setProperty("--before-content", "'Red'");
+    chosenMonster.style.marginLeft = "50px";
   },
 };
 
@@ -453,10 +454,10 @@ let missingNo = {
   applyToOperator: function () {
     imgElementEnemy.src = this.img;
     enemyMonster.appendChild(imgElementEnemy);
-    enemyMonster.style.scale = ".4";
-    enemyMonster.style.marginTop = "25px";
-    enemyMonster.style.marginBottom = "50px";
-    enemyMonster.style.marginRight = "50px";
+    enemyMonster.style.scale = ".65";
+    enemyMonster.style.margin = "0px 0px 0px 150px";
+    enemyMonster.style.border = "1px solid black";
+
     enemyMonsterName.style.setProperty(
       "--before-content",
       "'" + this.name + "'"
@@ -544,7 +545,37 @@ function combineActions() {
   levelAction();
 }
 
-attackBtn1.addEventListener("click", combineActions);
+function hideMonsterTimer() {
+  chosenMonster.classList.add("fadeAtk");
+  attackBtn1.style.pointerEvents = "none";
+  setTimeout(function () {
+    chosenMonster.classList.remove("fadeAtk");
+    attackBtn1.style.pointerEvents = "auto";
+  }, 1000);
+}
+
+let voltTackle = document.getElementById("voltTackle");
+
+function voltTackleMove() {
+  const chosenMonsterRect = chosenMonster.getBoundingClientRect();
+  const chosenMonsterX = chosenMonsterRect.left + 25;
+  const chosenMonsterY = chosenMonsterRect.top + 30;
+
+  voltTackle.style.left = chosenMonsterX + "px";
+  voltTackle.style.top = chosenMonsterY + "px";
+
+  if (window.innerWidth <= 550) {
+    voltTackle.style.left = chosenMonsterX - 50 + "px";
+    voltTackle.style.top = chosenMonsterY + 15 + "px";
+  }
+
+  voltTackle.style.display = "block";
+  voltTackle.classList.add("voltTackle");
+  setTimeout(function () {
+    voltTackle.style.display = "none";
+    voltTackle.classList.remove("voltTackel");
+  }, 1000);
+}
 
 //THINGS TO DO!
 // SET UP NAME, HEALTH-BAR, and LEVEL FOR ENEMY MONSTER! --- DONE! monster levels will be 10 higher than chosen Monsters.
