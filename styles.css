@@ -24,7 +24,7 @@ body {
 }
 
 #sec1 {
-  display: none; /* enable this in order to edit section 2 */
+  /* enable this in order to edit section 2 */
 }
 
 #logo-container {
@@ -156,8 +156,8 @@ body {
 
 #sec2 {
   top: 25%;
-  /* remove these 2 in order to edit section 2 */
-  /* remove these 2 in order to edit section 2 */
+  display: none; /* remove these 2 in order to edit section 2 */
+  opacity: 0; /* remove these 2 in order to edit section 2 */
   position: fixed;
 
   color: white;
